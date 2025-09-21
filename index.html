@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Wallet - ERC20/ERC721</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6.9/dist/ethers.umd.min.js"></script>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 20px auto; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        input, button { margin: 5px 0; padding: 8px; }
+        .status { padding: 10px; margin: 10px 0; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Mini Wallet (Sepolia Testnet)</h1>
+
+    <!-- 连接钱包 -->
+    <div class="section">
+        <h3>连接钱包</h3>
+        <button onclick="connectMetaMask()">🦊 连接 MetaMask</button>
+        <button onclick="disconnect()">🔌 断开连接</button>
+        <div id="walletAddress" class="status">未连接钱包</div>
+        <div id="networkInfo" class="status">🌐 网络: 未连接</div> <!-- ✅ 新增 -->
+    </div>
+
+    <!-- ETH 转账 -->
+    <div class="section">
+        <h3>ETH 转账</h3>
+        <input type="text" id="ethTo" placeholder="接收地址">
+        <input type="text" id="ethAmount" placeholder="金额 (ETH)">
+        <button onclick="transferETH()">发送 ETH</button>
+    </div>
+
+    <!-- ERC20 转账 -->
+    <div class="section">
+        <h3>ERC20 转账</h3>
+        <input type="text" id="erc20Address" placeholder="ERC20 合约地址">
+        <input type="text" id="erc20To" placeholder="接收地址">
+        <input type="text" id="erc20Amount" placeholder="金额">
+        <button onclick="transferERC20()">转账</button>
+        <button onclick="approveERC20()">授权</button>
+    </div>
+
+    <!-- ERC721 转账 -->
+    <div class="section">
+        <h3>ERC721 转账</h3>
+        <input type="text" id="erc721Address" placeholder="ERC721 合约地址">
+        <input type="text" id="erc721To" placeholder="接收地址">
+        <input type="text" id="erc721TokenId" placeholder="Token ID">
+        <button onclick="transferERC721()">转账 NFT</button>
+    </div>
+
+    <!-- 交易状态 -->
+    <div class="section">
+        <h3>交易状态</h3>
+        <div id="txStatus" class="status">等待操作...</div>
+    </div>
+
+    <script src="wallet.js"></script>
+</body>
+</html>
